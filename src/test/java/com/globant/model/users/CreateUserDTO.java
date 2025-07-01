@@ -1,19 +1,18 @@
 package com.globant.model.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-//import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
+@NoArgsConstructor
+@Builder
 
-public class UserDTO {
-    private Integer id;
-    private String usename;
+public class CreateUserDTO {
+    private String id;
+    private String username;
     private String firstName;
     private String lastName;
     private String email;

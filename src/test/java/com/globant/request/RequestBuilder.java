@@ -21,4 +21,40 @@ public class RequestBuilder {
 
         return requestSpecification.get(path);
     }
+    public static Response postRequest(String baseUrl, String path, String apiKey, Object body) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter())
+                .body(body);
+
+        return requestSpecification.post(path);
+    }
+    public static Response deleteRequest(String baseUrl, String path, String apiKey, String username) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .pathParam("username", username)
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter());
+
+        return requestSpecification.delete("/{username}");
+    }
+    public static Response loginRequest(String baseUrl, String path, String apiKey) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .queryParam("username")
+                .queryParam("password")
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter());
+
+        return requestSpecification.get("/{username}/{password}");
+    }
 }
