@@ -57,4 +57,49 @@ public class RequestBuilder {
 
         return requestSpecification.get("/{username}/{password}");
     }
+    public static Response logoutRequest(String baseUrl, String path, String apiKey) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter());
+
+        return requestSpecification.post();
+    }
+    public static Response listAvailablePetsRequest(String baseUrl, String path, String apiKey) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .queryParam("status", "available")
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter());
+
+        return requestSpecification.get();
+    }
+    public static Response createOrderRequest(String baseUrl, String path, String apiKey) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter());
+
+        return requestSpecification.post();
+    }
+    public static Response getPetDetailsRequest(String baseUrl, String path, String apiKey) {
+        RequestSpecification requestSpecification = RestAssured.given()
+                .baseUri(baseUrl)
+                .basePath(path)
+                .header(HttpHeaders.CONTENT_TYPE, ContentType.APPLICATION_JSON.getMimeType())
+                .header(APIKEY, apiKey)
+                .filter(new RequestLoggingFilter())
+                .filter(new ResponseLoggingFilter());
+
+        return requestSpecification.get();
+    }
 }

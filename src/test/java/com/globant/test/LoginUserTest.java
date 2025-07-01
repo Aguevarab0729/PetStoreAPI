@@ -18,14 +18,5 @@ public class LoginUserTest extends TestRunner {
         assertEquals(response.getStatusCode(), 200);
         assertEquals(getUserLoginResponseDTO.getLoginDTO().getUsername(), "prueba1", "The username matches the expected value.");
         assertEquals(getUserLoginResponseDTO.getLoginDTO().getPassword(), "123456", "The password matches the expected value.");
-
-        /*LoginDTO loginDTO = LoginDTO.builder()
-                .username("prueba1")
-                .password("123456")
-                .build();
-        Response response = RequestBuilder.getRequest(getBaseUrl(), "/user/login", getApiKey()), LoginDTO);
-        GetUserLoginResponseDTO getUserLoginResponseDTO = response.as(GetUserLoginResponseDTO.class);
-
-        assertEquals(response.getStatusCode(), 200,"The user login was successful.");*/
     }
 }
