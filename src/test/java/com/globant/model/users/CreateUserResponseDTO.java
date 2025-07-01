@@ -10,10 +10,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
-
-public class GetUserResponseDTO {
-
-    @JsonProperty(value = "data")
-    private UserDTO userDTO;
-
+public class CreateUserResponseDTO {
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String phone;
+    private Integer userStatus;
 }

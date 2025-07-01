@@ -11,9 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 
-public class GetUserResponseDTO {
-
+public class GetUserLoginResponseDTO {
     @JsonProperty(value = "data")
-    private UserDTO userDTO;
-
+    private LoginDTO loginDTO;
 }
